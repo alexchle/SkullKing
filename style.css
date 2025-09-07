@@ -1,0 +1,315 @@
+/* ==============================
+   Grundlayout
+============================== */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+/* ==============================
+   Versteckte Bereiche
+============================== */
+.hidden {
+  display: none !important;
+}
+
+/* ==============================
+   Setup- und Namensbereich
+============================== */
+#setup-area,
+#names-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+  max-width: 100%;
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+/* Überschriften mittig */
+#names-area h2,
+#setup-area h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ==============================
+   Namensfelder
+============================== */
+#name-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+#name-fields input[type="text"] {
+  width: 200px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+#name-fields input[type="text"]:focus {
+  outline: none;
+  border-color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+
+
+/* ==============================
+   Buttons & Checkbox
+============================== */
+button {
+  background: #222;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  display: block;
+  width: 200px;
+  padding: 8px 12px;
+}
+
+#names-area label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#names-area input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* ==============================
+   Spieleranzahl Auswahl (Buttons)
+============================== */
+#player-count-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  gap: 10px;
+}
+
+.player-count-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-count-btn:hover {
+  background: #555;
+}
+
+/* ==============================
+   Spielbereich / Tabelle
+============================== */
+#game-area {
+  overflow-x: auto;  /* horizontales Scrollen */
+  padding: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+/* Kopfzeilen */
+th {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+  background: #eee;
+}
+
+/* Tabellenzellen */
+td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+
+/* Runde-Spalte neutral */
+td:first-child,
+th:first-child {
+  background-color: #fff;
+}
+
+
+table tr td:nth-child(n+2) {
+  background-color: #fff; /* Standardfarbe */
+}
+
+/* Spielergruppe 1, 2, 3 ... abwechselnd */
+table tr td:nth-child(2), 
+table tr td:nth-child(3), 
+table tr td:nth-child(4) {
+  background-color: #f5f5f5;
+}
+
+table tr td:nth-child(5), 
+table tr td:nth-child(6), 
+table tr td:nth-child(7) {
+  background-color: #fff;
+}
+
+table tr td:nth-child(8), 
+table tr td:nth-child(9), 
+table tr td:nth-child(10) {
+  background-color: #f5f5f5;
+}
+
+/* Kopfzeile ähnlich: erste Spalte weiß, Spielergruppen abwechselnd hellgrau */
+table tr th:first-child {
+  background-color: #fff;
+}
+
+table tr th:nth-child(2),
+table tr th:nth-child(3),
+table tr th:nth-child(4) {
+  background-color: #eee;
+}
+
+table tr th:nth-child(5),
+table tr th:nth-child(6),
+table tr th:nth-child(7) {
+  background-color: #fff;
+}
+
+table tr th:nth-child(8),
+table tr th:nth-child(9),
+table tr th:nth-child(10) {
+  background-color: #eee;
+}
+
+/* ==============================
+   Inputs in Tabelle
+============================== */
+input[type="number"], input[type="text"] {
+  width: 60px;
+  padding: 4px;
+  margin: 2px;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   Responsive Anpassungen
+============================== */
+@media (max-width: 600px) {
+  input[type="number"], input[type="text"] {
+    width: 45px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
+
+/* Dropdowns in Tabelle wie Buttons gestalten */
+select {
+  width: 60px;
+  height: 35px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #222;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  appearance: none; /* für modernes Look & Feel */
+}
+
+select option {
+  color: black; /* ausgewählte Optionen sichtbar */
+  background: #fff;
+}
+
+select:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.num-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.num-display {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 18px;
+    text-align: center;
+    background: #222;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.num-panel {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.num-panel button {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    border-radius: 50%;
+    border: none;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.num-panel.hidden {
+    display: none;
+}

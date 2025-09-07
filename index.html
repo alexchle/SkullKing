@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Skull King Punkte</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Setup-Bereich: Spieleranzahl & Bonus -->
+  <div id="setup-area">
+    <h2>Spieleranzahl</h2>
+    <div id="player-count-options">
+      <!-- Zahlen 2-8 werden dynamisch erzeugt -->
+    </div>
+    <label><input type="checkbox" id="bonus-variant"> Halber Bonus bei ±1</label>
+  </div>
+
+
+  <!-- Namensbereich: dynamisch erstellt -->
+  <div id="names-area" class="hidden">
+    <h2>Spielernamen eingeben</h2>
+    <form id="names-form">
+      <div id="name-fields"></div>
+      <button type="submit">Namen bestätigen</button>
+    </form>
+  </div>
+
+  <!-- Spielbereich -->
+  <div id="game-area" class="hidden">
+    <table id="game-table"></table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
