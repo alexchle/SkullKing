@@ -168,15 +168,6 @@ th:first-child {
 }
 
 
-table tr td:nth-child(n+2) {
-  background-color: #fff; /* Standardfarbe */
-}
-/* ==============================
-   Global Box-Sizing
-============================== */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
 
 /* ==============================
    Spielerfarben (robust)
