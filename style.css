@@ -171,66 +171,84 @@ th:first-child {
 table tr td:nth-child(n+2) {
   background-color: #fff; /* Standardfarbe */
 }
+/* ==============================
+   Global Box-Sizing
+============================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-/* Spielergruppe 1, 2, 3 ... abwechselnd */
-table tr td:nth-child(2), 
-table tr td:nth-child(3), 
-table tr td:nth-child(4),
+/* ==============================
+   Spielerfarben (robust)
+============================== */
 
-table tr td:nth-child(8), 
-table tr td:nth-child(9), 
-table tr td:nth-child(10),
-
-table tr td:nth-child(14), 
-table tr td:nth-child(15), 
-table tr td:nth-child(16),
-
-table tr td:nth-child(20), 
-table tr td:nth-child(21), 
-table tr td:nth-child(22){
+/* Spielergruppe 1 */
+table tr td:nth-of-type(2),
+table tr td:nth-of-type(3),
+table tr td:nth-of-type(4),
+table tr td:nth-of-type(8),
+table tr td:nth-of-type(9),
+table tr td:nth-of-type(10),
+table tr td:nth-of-type(14),
+table tr td:nth-of-type(15),
+table tr td:nth-of-type(16),
+table tr td:nth-of-type(20),
+table tr td:nth-of-type(21),
+table tr td:nth-of-type(22) {
   background-color: #df0202;
 }
 
-table tr td:nth-child(5), 
-table tr td:nth-child(6), 
-table tr td:nth-child(7),
-
-table tr td:nth-child(11), 
-table tr td:nth-child(12), 
-table tr td:nth-child(13),
-
-table tr td:nth-child(17), 
-table tr td:nth-child(18), 
-table tr td:nth-child(19),
-
-table tr td:nth-child(23), 
-table tr td:nth-child(24), 
-table tr td:nth-child(25){
+/* Spielergruppe 2 */
+table tr td:nth-of-type(5),
+table tr td:nth-of-type(6),
+table tr td:nth-of-type(7),
+table tr td:nth-of-type(11),
+table tr td:nth-of-type(12),
+table tr td:nth-of-type(13),
+table tr td:nth-of-type(17),
+table tr td:nth-of-type(18),
+table tr td:nth-of-type(19),
+table tr td:nth-of-type(23),
+table tr td:nth-of-type(24),
+table tr td:nth-of-type(25) {
   background-color: #1f0b69;
 }
 
-
-/* Kopfzeile ähnlich: erste Spalte weiß, Spielergruppen abwechselnd hellgrau */
-table tr th:first-child {
+/* ==============================
+   Kopfzeilen-Farben
+============================== */
+table tr th:first-of-type {
   background-color: #fff;
 }
 
-table tr th:nth-child(2),
-table tr th:nth-child(3),
-table tr th:nth-child(4) {
+table tr th:nth-of-type(2),
+table tr th:nth-of-type(3),
+table tr th:nth-of-type(4),
+table tr th:nth-of-type(8),
+table tr th:nth-of-type(9),
+table tr th:nth-of-type(10),
+table tr th:nth-of-type(14),
+table tr th:nth-of-type(15),
+table tr th:nth-of-type(16),
+table tr th:nth-of-type(20),
+table tr th:nth-of-type(21),
+table tr th:nth-of-type(22) {
   background-color: #eee;
 }
 
-table tr th:nth-child(5),
-table tr th:nth-child(6),
-table tr th:nth-child(7) {
+table tr th:nth-of-type(5),
+table tr th:nth-of-type(6),
+table tr th:nth-of-type(7),
+table tr th:nth-of-type(11),
+table tr th:nth-of-type(12),
+table tr th:nth-of-type(13),
+table tr th:nth-of-type(17),
+table tr th:nth-of-type(18),
+table tr th:nth-of-type(19),
+table tr th:nth-of-type(23),
+table tr th:nth-of-type(24),
+table tr th:nth-of-type(25) {
   background-color: #fff;
-}
-
-table tr th:nth-child(8),
-table tr th:nth-child(9),
-table tr th:nth-child(10) {
-  background-color: #eee;
 }
 
 /* ==============================
