@@ -64,7 +64,7 @@ function startGame() {
     // Kopfzeile
     const header = table.insertRow();
     header.insertCell().innerText = "Runde";
-    playerNames.forEach(name => {
+    playerNames.forEach((name, p) => {
         header.insertCell().innerText = `${name} Tipp`;
         header.insertCell().innerText = "Stiche";
         header.insertCell().innerText = "Bonus";
@@ -73,7 +73,7 @@ function startGame() {
     // Runden
     for (let r = 1; r <= totalRounds; r++) {
         const row = table.insertRow();
-        row.insertCell().innerText = r; // Nur Runde, Kartenanzahl = r wird implizit genutzt
+        row.insertCell().innerText = r; // Runde
         for (let p = 0; p < playerCount; p++) {
             row.insertCell().appendChild(createDropdown("tipp", r, p));
             row.insertCell().appendChild(createDropdown("stiche", r, p));
@@ -81,21 +81,26 @@ function startGame() {
         }
     }
 
-    // Gesamtpunktezeile
+    // Gesamtpunkte-Zeile
     const totalRow = table.insertRow();
-    totalRow.insertCell().innerText = "Gesamtpunkte";
+    totalRow.classList.add("total-row");
+
+    const labelCell = totalRow.insertCell();
+    labelCell.innerText = "Gesamtpunkte";
+    labelCell.classList.add("label");
+
     for (let p = 0; p < playerCount; p++) {
         const cell = totalRow.insertCell();
         cell.id = `total-${p}`;
-        cell.colSpan = 3;
-        cell.innerText = "0";
+        cell.classList.add(p % 2 === 0 ? "group1" : "group2"); // Spielerfarbe
+        cell.innerText = "0"; // Anfangswert
     }
 
     document.getElementById("game-area").classList.remove("hidden");
 
     // Eventlistener für Berechnung
-    table.querySelectorAll("input").forEach(input => {
-        input.addEventListener("input", calculateTotals);
+    table.querySelectorAll("select").forEach(select => {
+        select.addEventListener("change", calculateTotals);
     });
 
     calculateTotals();
