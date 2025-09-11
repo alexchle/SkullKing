@@ -64,66 +64,42 @@ function startGame() {
     // Kopfzeile
     const header = table.insertRow();
     header.insertCell().innerText = "Runde";
-    playerNames.forEach((name, p) => {
-        const tippCell = header.insertCell();
-        tippCell.innerText = `${name} Tipp`;
-        const sticheCell = header.insertCell();
-        sticheCell.innerText = "Stiche";
-        const bonusCell = header.insertCell();
-        bonusCell.innerText = "Bonus";
+    playerNames.forEach(name => {
+        header.insertCell().innerText = `${name} Tipp`;
+        header.insertCell().innerText = "Stiche";
+        header.insertCell().innerText = "Bonus";
     });
 
     // Runden
     for (let r = 1; r <= totalRounds; r++) {
         const row = table.insertRow();
-        row.classList.add("game-row"); // normale Zeile
-        row.insertCell().innerText = r; // Runde
+        row.insertCell().innerText = r; // Nur Runde, Kartenanzahl = r wird implizit genutzt
         for (let p = 0; p < playerCount; p++) {
-            const cellTipp = row.insertCell();
-            cellTipp.classList.add(p % 2 === 0 ? "group1" : "group2"); // Spielerfarbe
-            cellTipp.appendChild(createDropdown("tipp", r, p));
-
-            const cellStiche = row.insertCell();
-            cellStiche.classList.add(p % 2 === 0 ? "group1" : "group2");
-            cellStiche.appendChild(createDropdown("stiche", r, p));
-
-            const cellBonus = row.insertCell();
-            cellBonus.classList.add(p % 2 === 0 ? "group1" : "group2");
-            cellBonus.appendChild(createDropdown("bonus", r, p));
+            row.insertCell().appendChild(createDropdown("tipp", r, p));
+            row.insertCell().appendChild(createDropdown("stiche", r, p));
+            row.insertCell().appendChild(createDropdown("bonus", r, p));
         }
     }
 
-    // Gesamtpunkte-Zeile
+    // Gesamtpunktezeile
     const totalRow = table.insertRow();
-    totalRow.classList.add("total-row");
-    const labelCell = totalRow.insertCell();
-    labelCell.innerText = "Gesamtpunkte";
-    labelCell.classList.add("label");
-
+    totalRow.insertCell().innerText = "Gesamtpunkte";
     for (let p = 0; p < playerCount; p++) {
-        const cellTipp = totalRow.insertCell();
-        cellTipp.classList.add(p % 2 === 0 ? "group1" : "group2");
-        cellTipp.innerText = "0";
-
-        const cellStiche = totalRow.insertCell();
-        cellStiche.classList.add(p % 2 === 0 ? "group1" : "group2");
-        cellStiche.innerText = "0";
-
-        const cellBonus = totalRow.insertCell();
-        cellBonus.classList.add(p % 2 === 0 ? "group1" : "group2");
-        cellBonus.innerText = "0";
+        const cell = totalRow.insertCell();
+        cell.id = `total-${p}`;
+        cell.colSpan = 3;
+        cell.innerText = "0";
     }
 
     document.getElementById("game-area").classList.remove("hidden");
 
     // Eventlistener für Berechnung
-    table.querySelectorAll("select").forEach(select => {
-        select.addEventListener("change", calculateTotals);
+    table.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", calculateTotals);
     });
 
     calculateTotals();
 }
-
 
 function createNumberInput(initial = "") {
     const input = document.createElement("input");

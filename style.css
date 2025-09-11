@@ -165,14 +165,60 @@ th:first-child {
 }
 
 
-/* Normale Zeilen */
-.game-row td.group1 { background-color: #bf6060; }
-.game-row td.group2 { background-color: #e6cfcf; }
+/* ==============================
+   Gesamtpunkte-Zeile (letzte Zeile)
+============================== */
+table tr.total-row td:first-child {
+  background-color: #fff;
+  font-weight: bold;
+}
 
-/* Gesamtpunkte-Zeile */
-.total-row td.label { background-color: #fff; font-weight: bold; }
-.total-row td.group1 { background-color: #bf6060; }
-.total-row td.group2 { background-color: #e6cfcf; }
+table tr.total-row td:nth-child(2),
+table tr.total-row td:nth-child(4),
+table tr.total-row td:nth-child(6),
+table tr.total-row td:nth-child(8) {
+  background-color: #bf6060; /* Spielergruppe 1 */
+}
+
+table tr.total-row td:nth-child(3),
+table tr.total-row td:nth-child(5),
+table tr.total-row td:nth-child(7),
+table tr.total-row td:nth-child(9) {
+  background-color: #e6cfcf; /* Spielergruppe 2 */
+}
+/* ==============================
+   Spielerfarben normale Zeilen
+============================== */
+table tr:not(.total-row) td:nth-of-type(2),
+table tr:not(.total-row) td:nth-of-type(3),
+table tr:not(.total-row) td:nth-of-type(4),
+table tr:not(.total-row) td:nth-of-type(8),
+table tr:not(.total-row) td:nth-of-type(9),
+table tr:not(.total-row) td:nth-of-type(10),
+table tr:not(.total-row) td:nth-of-type(14),
+table tr:not(.total-row) td:nth-of-type(15),
+table tr:not(.total-row) td:nth-of-type(16),
+table tr:not(.total-row) td:nth-of-type(20),
+table tr:not(.total-row) td:nth-of-type(21),
+table tr:not(.total-row) td:nth-of-type(22) {
+  background-color: #bf6060;
+}
+
+table tr:not(.total-row) td:nth-of-type(5),
+table tr:not(.total-row) td:nth-of-type(6),
+table tr:not(.total-row) td:nth-of-type(7),
+table tr:not(.total-row) td:nth-of-type(11),
+table tr:not(.total-row) td:nth-of-type(12),
+table tr:not(.total-row) td:nth-of-type(13),
+table tr:not(.total-row) td:nth-of-type(17),
+table tr:not(.total-row) td:nth-of-type(18),
+table tr:not(.total-row) td:nth-of-type(19),
+table tr:not(.total-row) td:nth-of-type(23),
+table tr:not(.total-row) td:nth-of-type(24),
+table tr:not(.total-row) td:nth-of-type(25) {
+  background-color: #e6cfcf;
+}
+
 
 /* ==============================
    Inputs in Tabelle
