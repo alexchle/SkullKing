@@ -214,42 +214,6 @@ table tr td:nth-of-type(25) {
   background-color: #1f0b69;
 }
 
-/* ==============================
-   Kopfzeilen-Farben
-============================== */
-table tr th:first-of-type {
-  background-color: #fff;
-}
-
-table tr th:nth-of-type(2),
-table tr th:nth-of-type(3),
-table tr th:nth-of-type(4),
-table tr th:nth-of-type(8),
-table tr th:nth-of-type(9),
-table tr th:nth-of-type(10),
-table tr th:nth-of-type(14),
-table tr th:nth-of-type(15),
-table tr th:nth-of-type(16),
-table tr th:nth-of-type(20),
-table tr th:nth-of-type(21),
-table tr th:nth-of-type(22) {
-  background-color: #eee;
-}
-
-table tr th:nth-of-type(5),
-table tr th:nth-of-type(6),
-table tr th:nth-of-type(7),
-table tr th:nth-of-type(11),
-table tr th:nth-of-type(12),
-table tr th:nth-of-type(13),
-table tr th:nth-of-type(17),
-table tr th:nth-of-type(18),
-table tr th:nth-of-type(19),
-table tr th:nth-of-type(23),
-table tr th:nth-of-type(24),
-table tr th:nth-of-type(25) {
-  background-color: #a40dca;
-}
 
 /* ==============================
    Inputs in Tabelle
