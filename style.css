@@ -168,42 +168,50 @@ th:first-child {
 }
 
 
-
 /* ==============================
-   Spielerfarben (robust)
+   Spielerfarben normale Zeilen
 ============================== */
-
-/* Spielergruppe 1 */
-table tr td:nth-of-type(2),
-table tr td:nth-of-type(3),
-table tr td:nth-of-type(4),
-table tr td:nth-of-type(8),
-table tr td:nth-of-type(9),
-table tr td:nth-of-type(10),
-table tr td:nth-of-type(14),
-table tr td:nth-of-type(15),
-table tr td:nth-of-type(16),
-table tr td:nth-of-type(20),
-table tr td:nth-of-type(21),
-table tr td:nth-of-type(22) {
+table tr:not(.total-row) td:nth-of-type(2),
+table tr:not(.total-row) td:nth-of-type(3),
+table tr:not(.total-row) td:nth-of-type(4),
+table tr:not(.total-row) td:nth-of-type(8),
+table tr:not(.total-row) td:nth-of-type(9),
+table tr:not(.total-row) td:nth-of-type(10),
+table tr:not(.total-row) td:nth-of-type(14),
+table tr:not(.total-row) td:nth-of-type(15),
+table tr:not(.total-row) td:nth-of-type(16),
+table tr:not(.total-row) td:nth-of-type(20),
+table tr:not(.total-row) td:nth-of-type(21),
+table tr:not(.total-row) td:nth-of-type(22) {
   background-color: #bf6060;
 }
 
-/* Spielergruppe 2 */
-table tr td:nth-of-type(5),
-table tr td:nth-of-type(6),
-table tr td:nth-of-type(7),
-table tr td:nth-of-type(11),
-table tr td:nth-of-type(12),
-table tr td:nth-of-type(13),
-table tr td:nth-of-type(17),
-table tr td:nth-of-type(18),
-table tr td:nth-of-type(19),
-table tr td:nth-of-type(23),
-table tr td:nth-of-type(24),
-table tr td:nth-of-type(25) {
+table tr:not(.total-row) td:nth-of-type(5),
+table tr:not(.total-row) td:nth-of-type(6),
+table tr:not(.total-row) td:nth-of-type(7),
+table tr:not(.total-row) td:nth-of-type(11),
+table tr:not(.total-row) td:nth-of-type(12),
+table tr:not(.total-row) td:nth-of-type(13),
+table tr:not(.total-row) td:nth-of-type(17),
+table tr:not(.total-row) td:nth-of-type(18),
+table tr:not(.total-row) td:nth-of-type(19),
+table tr:not(.total-row) td:nth-of-type(23),
+table tr:not(.total-row) td:nth-of-type(24),
+table tr:not(.total-row) td:nth-of-type(25) {
   background-color: #e6cfcf;
 }
+
+/* ==============================
+   Gesamtpunkte-Zeile
+============================== */
+table tr.total-row td.group1 {
+  background-color: #bf6060;
+}
+
+table tr.total-row td.group2 {
+  background-color: #e6cfcf;
+}
+
 
 
 /* ==============================
