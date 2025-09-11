@@ -206,14 +206,16 @@ table tr.total-row td:first-child {
 }
 
 table tr.total-row td:nth-child(2),
-table tr.total-row td:nth-child(3),
-table tr.total-row td:nth-child(4) {
+table tr.total-row td:nth-child(4),
+table tr.total-row td:nth-child(6),
+table tr.total-row td:nth-child(8) {
   background-color: #bf6060; /* Spielergruppe 1 */
 }
 
+table tr.total-row td:nth-child(3),
 table tr.total-row td:nth-child(5),
-table tr.total-row td:nth-child(6),
-table tr.total-row td:nth-child(7) {
+table tr.total-row td:nth-child(7),
+table tr.total-row td:nth-child(8) {
   background-color: #e6cfcf; /* Spielergruppe 2 */
 }
 
