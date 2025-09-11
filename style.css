@@ -164,6 +164,28 @@ th:first-child {
   background-color: #fff;
 }
 
+
+/* ==============================
+   Gesamtpunkte-Zeile (letzte Zeile)
+============================== */
+table tr.total-row td:first-child {
+  background-color: #fff;
+  font-weight: bold;
+}
+
+table tr.total-row td:nth-child(2),
+table tr.total-row td:nth-child(4),
+table tr.total-row td:nth-child(6),
+table tr.total-row td:nth-child(8) {
+  background-color: #bf6060; /* Spielergruppe 1 */
+}
+
+table tr.total-row td:nth-child(3),
+table tr.total-row td:nth-child(5),
+table tr.total-row td:nth-child(7),
+table tr.total-row td:nth-child(8) {
+  background-color: #e6cfcf; /* Spielergruppe 2 */
+}
 /* ==============================
    Spielerfarben normale Zeilen
 ============================== */
@@ -197,27 +219,6 @@ table tr:not(.total-row) td:nth-of-type(25) {
   background-color: #e6cfcf;
 }
 
-/* ==============================
-   Gesamtpunkte-Zeile (letzte Zeile)
-============================== */
-table tr.total-row td:first-child {
-  background-color: #fff;
-  font-weight: bold;
-}
-
-table tr.total-row td:nth-child(2),
-table tr.total-row td:nth-child(4),
-table tr.total-row td:nth-child(6),
-table tr.total-row td:nth-child(8) {
-  background-color: #bf6060; /* Spielergruppe 1 */
-}
-
-table tr.total-row td:nth-child(3),
-table tr.total-row td:nth-child(5),
-table tr.total-row td:nth-child(7),
-table tr.total-row td:nth-child(8) {
-  background-color: #e6cfcf; /* Spielergruppe 2 */
-}
 
 /* ==============================
    Inputs in Tabelle
