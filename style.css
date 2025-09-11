@@ -68,15 +68,13 @@ html, body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-
-
 /* ==============================
    Buttons & Checkbox
 ============================== */
 button {
   background: #222;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 12px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
@@ -84,7 +82,6 @@ button {
   margin-top: 10px;
   display: block;
   width: 200px;
-  padding: 8px 12px;
 }
 
 #names-area label {
@@ -167,7 +164,6 @@ th:first-child {
   background-color: #fff;
 }
 
-
 /* ==============================
    Spielerfarben normale Zeilen
 ============================== */
@@ -202,17 +198,24 @@ table tr:not(.total-row) td:nth-of-type(25) {
 }
 
 /* ==============================
-   Gesamtpunkte-Zeile
+   Gesamtpunkte-Zeile (letzte Zeile)
 ============================== */
-table tr.total-row td.group1 {
-  background-color: #bf6060;
+table tr.total-row td:first-child {
+  background-color: #fff;
+  font-weight: bold;
 }
 
-table tr.total-row td.group2 {
-  background-color: #e6cfcf;
+table tr.total-row td:nth-child(2),
+table tr.total-row td:nth-child(3),
+table tr.total-row td:nth-child(4) {
+  background-color: #bf6060; /* Spielergruppe 1 */
 }
 
-
+table tr.total-row td:nth-child(5),
+table tr.total-row td:nth-child(6),
+table tr.total-row td:nth-child(7) {
+  background-color: #e6cfcf; /* Spielergruppe 2 */
+}
 
 /* ==============================
    Inputs in Tabelle
@@ -253,11 +256,11 @@ select {
   font-size: 14px;
   cursor: pointer;
   padding: 0;
-  appearance: none; /* für modernes Look & Feel */
+  appearance: none;
 }
 
 select option {
-  color: black; /* ausgewählte Optionen sichtbar */
+  color: black;
   background: #fff;
 }
 
@@ -267,49 +270,50 @@ select:focus {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* Num Selector Styles */
 .num-selector {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .num-display {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 18px;
-    text-align: center;
-    background: #222;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin: 2px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 18px;
+  text-align: center;
+  background: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 2px;
 }
 
 .num-panel {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    display: flex;
-    flex-wrap: wrap;
-    background: #f5f5f5;
-    border-radius: 12px;
-    padding: 5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 10;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 10;
 }
 
 .num-panel button {
-    width: 40px;
-    height: 40px;
-    margin: 3px;
-    border-radius: 50%;
-    border: none;
-    background: #222;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  border-radius: 50%;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .num-panel.hidden {
-    display: none;
+  display: none;
 }
