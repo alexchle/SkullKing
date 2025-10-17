@@ -2,6 +2,7 @@ let playerCount = 4;
 let playerNames = [];
 let bonusVariant = false;
 const totalRounds = 10;
+const STORAGE_KEY = 'skullKingGameSession';
 
 // Farbschema für Spielergruppen
 const playerColors = [
@@ -23,30 +24,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const playerOptions = document.getElementById("player-count-options");
     const setupArea = document.getElementById("setup-area");
 
+    if(loadGame()) {
+        setupArea.classList.add("hidden");
+    } 
+    else {
     // Buttons 2-8 erstellen
-    for (let i = 2; i <= 8; i++) {
-        const btn = document.createElement("div");
-        btn.classList.add(
-            "w-10", "h-10",
-            "flex", "items-center", "justify-center",
-            "rounded-full",
-            "bg-gray-800", "text-white", "font-semibold",
-            "cursor-pointer",
-            "hover:bg-gray-600",
-            "transition"
-        );
-        btn.innerText = i;
-        btn.addEventListener("click", () => {
-            playerCount = i;
-            bonusVariant = document.getElementById("bonus-variant").checked;
+        for (let i = 2; i <= 8; i++) {
+            const btn = document.createElement("div");
+            btn.classList.add(
+                "w-10", "h-10",
+                "flex", "items-center", "justify-center",
+                "rounded-full",
+                "bg-gray-800", "text-white", "font-semibold",
+                "cursor-pointer",
+                "hover:bg-gray-600",
+                "transition"
+            );
+            btn.innerText = i;
+            btn.addEventListener("click", () => {
+                playerCount = i;
+                bonusVariant = document.getElementById("bonus-variant").checked;
 
-            setupArea.classList.add("hidden");
-            showNameFields();
-        });
-        playerOptions.appendChild(btn);
+                setupArea.classList.add("hidden");
+                showNameFields();
+            });
+            playerOptions.appendChild(btn);
+        }
+
     }
 });
-
 
 function showNameFields() {
     const namesArea = document.getElementById("names-area");
@@ -80,6 +86,7 @@ function showNameFields() {
                             .map((input, index) => input.value.trim() || `Spieler ${index+1}`);
 
         namesArea.classList.add("hidden");
+        saveGame();
         startGame();
     };
 }
@@ -154,7 +161,6 @@ function startGame() {
 
     document.getElementById("game-area").classList.remove("hidden");
 
-    calculateTotals();
 
     // Gimmick-Piratenbutton anzeigen
     const pirateContainer = document.getElementById("pirate-button-container");
@@ -207,6 +213,7 @@ function calculateTotals() {
         }
         document.getElementById(`total-${p}`).innerText = total;
     }
+    saveGame();
 }
 
 function createDropdown(type, rowIndex, playerIndex) {
@@ -249,4 +256,84 @@ function createDropdown(type, rowIndex, playerIndex) {
     return select;
 }
 
- 
+function saveGame() {
+    const gameState = {
+        playerCount: playerCount,
+        playerNames: playerNames,
+        bonusVariant: bonusVariant,
+        //Tabelle speichern
+        roundsData: [] 
+    };
+
+    
+    if (playerNames.length > 0) {
+        const table = document.getElementById("game-table");
+        if (table && table.rows.length > 1) { 
+             for (let r = 1; r <= totalRounds; r++) {
+                const row = table.rows[r];
+                const round = { tips: [], tricks: [], bonus: [] };
+
+                for (let p = 0; p < playerCount; p++) {
+                    const spTipp = row.cells[1 + p * 3].querySelector("select");
+                    const spStiche = row.cells[2 + p * 3].querySelector("select");
+                    const spBonus = row.cells[3 + p * 3].querySelector("select");
+                    
+                    
+                    round.tips.push(spTipp ? spTipp.value : "");
+                    round.tricks.push(spStiche ? spStiche.value : "");
+                    round.bonus.push(spBonus ? spBonus.value : "");
+                }
+                gameState.roundsData.push(round);
+            }
+        }
+    }
+    
+    try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
+    } catch (e) {
+        console.error("Fehler beim Speichern in sessionStorage:", e);
+    }
+}
+
+function loadGame() {
+    try {
+        const stored = sessionStorage.getItem(STORAGE_KEY);
+        if (!stored) return false; 
+
+        const gameState = JSON.parse(stored);
+
+        
+        playerCount = gameState.playerCount || 4;
+        playerNames = gameState.playerNames || [];
+        bonusVariant = gameState.bonusVariant || false;
+
+        if (playerNames.length > 0) {
+            startGame(); 
+
+            const table = document.getElementById("game-table");
+            if (table && gameState.roundsData) {
+                gameState.roundsData.forEach((round, rIndex) => {
+                    const row = table.rows[rIndex + 1]; 
+                    if (row) {
+                        for (let p = 0; p < playerCount; p++) {
+                            
+                            const spTipp = row.cells[1 + p * 3].querySelector("select");
+                            const spStiche = row.cells[2 + p * 3].querySelector("select");
+                            const spBonus = row.cells[3 + p * 3].querySelector("select");
+                            
+                            if (spTipp) spTipp.value = round.tips[p] || "";
+                            if (spStiche) spStiche.value = round.tricks[p] || "";
+                            if (spBonus) spBonus.value = round.bonus[p] || "0"; 
+                        }
+                    }
+                });
+            }
+            calculateTotals(); 
+            return true;
+        }
+        return false;
+    } catch (e) {
+        console.error("Fehler beim Laden aus localStorage:", e);
+        return false;
+    }
+}
