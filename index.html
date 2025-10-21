@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skull King Punkte</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skull King Punkte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-  <!-- Setup-Bereich -->
-  <div id="setup-area" class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center">
-    <h2 class="text-xl font-bold mb-4">Spieleranzahl</h2>
-    <div id="player-count-options" class="flex flex-wrap justify-center gap-2 mb-4">
+  <body class="bg-gray-500 min-h-screen flex flex-col items-center p-4">
+    
 
+    <!-- Setup-Bereich -->
+    <div id="setup-area" class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center">
+      <h2 class="text-xl font-bold mb-4">Spieleranzahl</h2>
+      <div id="player-count-options" class="flex flex-wrap justify-center gap-2 mb-4"></div>
+      <label class="flex items-center justify-center gap-2 text-sm">
+        <input type="checkbox" id="bonus-variant" class="h-4 w-4">
+        Halber Bonus bei ±1
+      </label>
     </div>
-    <label class="flex items-center justify-center gap-2 text-sm">
-      <input type="checkbox" id="bonus-variant" class="h-4 w-4">
-      Halber Bonus bei ±1
-    </label>
-  </div>
 
-  <!-- Namensbereich -->
-  <div id="names-area" class="hidden bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center mt-4">
-    <h2 class="text-xl font-bold mb-4">Spielernamen eingeben</h2>
-    <form id="names-form">
-      <div id="name-fields" class="flex flex-col items-center gap-2 mb-4"></div>
+    <!-- Namensbereich -->
+    <div id="names-area" class="hidden bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center mt-4">
+      <h2 class="text-xl font-bold mb-4">Spielernamen eingeben</h2>
+      <form id="names-form">
+        <div id="name-fields" class="flex flex-col items-center gap-2 mb-4"></div>
 
-      <button type="submit" class="bg-blue-600 text-white hover:bg-blue-700 transition w-48 px-3 py-2 rounded-lg ">
-        Namen bestätigen
+        <button type="submit" class="bg-black text-white hover:bg-gray-600 transition w-48 px-3 py-2 rounded-lg ">
+          Namen bestätigen
+        </button>
+      </form> 
+    </div>
+
+    <!-- Spielbereich -->
+    <div id="game-area" class="hidden bg-white shadow-lg rounded-2xl p-4 w-full overflow-x-auto mt-4">
+      <table id="game-table" class="w-full border-collapse text-sm"></table>
+    </div>
+
+    <!-- Piraten Button-->
+    <div id="pirate-button-container" class="mt-4 text-center hidden">
+      <button id="pirate-button"
+            class="bg-red-600 rounded-full w-20 h-20 flex items-center justify-center
+                    mx-auto cursor-pointer
+                    shadow-[0_14px_0_0_rgba(139,0,0,1)]
+                    hover:shadow-[0_12px_0_0_rgba(139,0,0,1)]
+                    active:translate-y-1 active:shadow-[0_2px_0_0_rgba(139,0,0,1)]
+                    transition-all duration-150 overflow-hidden relative">
+            <img src="..\Assets\SkullKing.PNG" alt="Pirate"
+            class="absolute inset-0 w-full h-full object-cover rounded-full">
       </button>
-    </form> 
-  </div>
-
-  <!-- Spielbereich -->
-  <div id="game-area" class="hidden bg-white shadow-lg rounded-2xl p-4 w-full overflow-x-auto mt-4">
-    <table id="game-table" class="w-full border-collapse text-sm"></table>
-  </div>
-
-  <!-- Piraten Button-->>
-  <div id="pirate-button-container" class="mt-4 text-center hidden">
-  <button id="pirate-button"
-          class="bg-red-600 rounded-full w-20 h-20 flex items-center justify-center
-                 mx-auto cursor-pointer
-                 shadow-[0_14px_0_0_rgba(139,0,0,1)]
-                 hover:shadow-[0_12px_0_0_rgba(139,0,0,1)]
-                 active:translate-y-1 active:shadow-[0_2px_0_0_rgba(139,0,0,1)]
-                 transition-all duration-150 overflow-hidden relative">
-    <img src="SkullKing.PNG" alt="Pirate"
-         class="absolute inset-0 w-full h-full object-cover rounded-full">
-  </button>
-</div>
+    </div>
 
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
