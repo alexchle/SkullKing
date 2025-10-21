@@ -3,6 +3,8 @@ let playerNames = [];
 let bonusVariant = false;
 const totalRounds = 10;
 const STORAGE_KEY = 'skullKingGameSession';
+const videoElement = document.getElementById('bg-video');
+
 
 // Farbschema für Spielergruppen
 const playerColors = [
@@ -23,6 +25,12 @@ function getPlayerColorClass(p) {
 document.addEventListener("DOMContentLoaded", () => {
     const playerOptions = document.getElementById("player-count-options");
     const setupArea = document.getElementById("setup-area");
+
+    if (videoElement) {
+        // 2. Setze die Wiedergabegeschwindigkeit (z.B. auf 50% der Normalgeschwindigkeit)
+        videoElement.playbackRate = 1; 
+        
+    }
 
     if(loadGame()) {
         setupArea.classList.add("hidden");
@@ -73,7 +81,7 @@ function showNameFields() {
             "text-center",
             "focus:outline-none",
             "focus:ring-2",
-            "focus:ring-blue-500"
+            "focus:ring-grey-800"
         );
         nameFields.appendChild(input);
     }
@@ -168,7 +176,7 @@ function startGame() {
 
     // Sound abspielen
     const pirateBtn = document.getElementById("pirate-button");
-    const audio = new Audio("SkullKing.mp3"); // deine Musikdatei
+    const audio = new Audio("../Assets/SkullKing.mp3"); // deine Musikdatei
     pirateBtn.addEventListener("click", () => {
         audio.currentTime = 0; // immer von vorne starten
         audio.play();
