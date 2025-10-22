@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skull King Punkte</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skull King Punkte</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <body class="bg-gray-500 min-h-screen flex flex-col items-center p-4">
-    
+  <style>
+  #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.5; /* Helligkeit anpassen */
 
-    <!-- Setup-Bereich -->
-    <div id="setup-area" class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center">
-      <h2 class="text-xl font-bold mb-4">Spieleranzahl</h2>
-      <div id="player-count-options" class="flex flex-wrap justify-center gap-2 mb-4"></div>
-      <label class="flex items-center justify-center gap-2 text-sm">
-        <input type="checkbox" id="bonus-variant" class="h-4 w-4">
-        Halber Bonus bei ±1
-      </label>
-    </div>
+  }
+</style>
 
-    <!-- Namensbereich -->
-    <div id="names-area" class="hidden bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center mt-4">
-      <h2 class="text-xl font-bold mb-4">Spielernamen eingeben</h2>
-      <form id="names-form">
-        <div id="name-fields" class="flex flex-col items-center gap-2 mb-4"></div>
+</head>
 
-        <button type="submit" class="bg-black text-white hover:bg-gray-600 transition w-48 px-3 py-2 rounded-lg ">
-          Namen bestätigen
-        </button>
-      </form> 
-    </div>
+<body class="bg-gray-500 min-h-screen flex flex-col items-center p-4">
+
+  <video autoplay loop muted id="bg-video"> 
+  <source src="../Assets/2.1.mp4" type="video/mp4">
+  </video>
+
+  <!-- Setup-Bereich -->
+  <div id="setup-area" class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center">
+    <h2 class="text-xl font-bold mb-4">Spieleranzahl</h2>
+    <div id="player-count-options" class="flex flex-wrap justify-center gap-2 mb-4">
 
     <!-- Spielbereich -->
     <div id="game-area" class="hidden bg-white shadow-lg rounded-2xl p-4 w-full overflow-x-auto mt-4">

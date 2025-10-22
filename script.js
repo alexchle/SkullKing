@@ -3,6 +3,8 @@ let playerNames = [];
 let bonusVariant = false;
 const totalRounds = 10;
 const STORAGE_KEY = 'skullKingGameSession';
+const videoElement = document.getElementById('bg-video');
+
 
 // Farbschema für Spielergruppen
 const playerColors = [
@@ -23,6 +25,12 @@ function getPlayerColorClass(p) {
 document.addEventListener("DOMContentLoaded", () => {
     const playerOptions = document.getElementById("player-count-options");
     const setupArea = document.getElementById("setup-area");
+
+    if (videoElement) {
+        // 2. Setze die Wiedergabegeschwindigkeit (z.B. auf 50% der Normalgeschwindigkeit)
+        videoElement.playbackRate = 1; 
+        
+    }
 
     if(loadGame()) {
         setupArea.classList.add("hidden");
