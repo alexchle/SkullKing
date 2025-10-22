@@ -4,6 +4,9 @@ let bonusVariant = false;
 const totalRounds = 10;
 const STORAGE_KEY = 'skullKingGameSession';
 const videoElement = document.getElementById('bg-video');
+const toggleVideoBtn = document.getElementById('toggle-video-btn');
+const shipIcon = document.getElementById('ship-icon');
+const toggleVideoText = document.getElementById('toggle-video-text');
 
 
 // Farbschema für Spielergruppen
@@ -25,11 +28,24 @@ function getPlayerColorClass(p) {
 document.addEventListener("DOMContentLoaded", () => {
     const playerOptions = document.getElementById("player-count-options");
     const setupArea = document.getElementById("setup-area");
+    const pirateContainer = document.getElementById("pirate-button-container"); 
 
+    
     if (videoElement) {
-        // 2. Setze die Wiedergabegeschwindigkeit (z.B. auf 50% der Normalgeschwindigkeit)
         videoElement.playbackRate = 1; 
         
+       
+        videoElement.pause();
+        videoElement.currentTime = 0;
+        
+        
+        videoElement.classList.remove("hidden"); 
+
+        
+        if (toggleVideoBtn && toggleVideoText) {
+            toggleVideoBtn.classList.remove('active');
+            ;
+        }
     }
 
     if(loadGame()) {
@@ -58,7 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             playerOptions.appendChild(btn);
         }
-
+    }
+    
+    
+    if (toggleVideoBtn) {
+        toggleVideoBtn.addEventListener("click", toggleVideo);
     }
 });
 
@@ -166,8 +186,8 @@ function startGame() {
     document.getElementById("game-area").classList.remove("hidden");
 
 
-    // iratenbutton anzeigen
-    const pirateContainer = document.getElementById("pirate-button-container");
+    // Piratenbutton anzeigen
+    const pirateContainer = document.getElementById("pirate-button");
     pirateContainer.classList.remove("hidden");
 
     //Sound abspielen
@@ -339,5 +359,26 @@ function loadGame() {
     } catch (e) {
         console.error("Fehler beim Laden aus localStorage:", e);
         return false;
+    }
+}
+
+function toggleVideo() {
+    if (!videoElement || !toggleVideoBtn || !shipIcon || !toggleVideoText) return;
+
+    const isPlaying = !videoElement.paused; 
+
+    if (isPlaying) {
+        
+        videoElement.pause();
+        videoElement.currentTime = 0; 
+        
+        
+        toggleVideoBtn.classList.remove('active');
+        
+    } else {
+       
+        videoElement.play();
+        toggleVideoBtn.classList.add('active');
+       
     }
 }
