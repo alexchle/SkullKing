@@ -90,9 +90,7 @@ function showNameFields() {
 
     document.getElementById("names-form").onsubmit = function(e) {
         e.preventDefault();
-        playerNames = Array.from(nameFields.querySelectorAll("input"))
-                            .map((input, index) => input.value.trim() || `Spieler ${index+1}`);
-
+        playerNames = Array.from(nameFields.querySelectorAll("input")).map((input, index) => input.value.trim() || `Spieler ${index+1}`);
         namesArea.classList.add("hidden");
         saveGame();
         startGame();
@@ -115,10 +113,7 @@ function startGame() {
         ["Tipp", "Stiche", "Bonus"].forEach((label) => {
             let th = document.createElement("th");
             th.innerText = (label === "Tipp" ? name + " " : "") + label;
-            th.classList.add(
-                "border", "border-gray-300", "px-2", "py-1",
-                getPlayerColorClass(p)
-            );
+            th.classList.add("border", "border-gray-300", "px-2", "py-1",getPlayerColorClass(p));
             header.appendChild(th);
         });
     });
@@ -144,6 +139,7 @@ function startGame() {
             let cell3 = row.insertCell();
             cell3.classList.add("border", "border-gray-300", "px-2", "py-1", color, "text-center");
             cell3.appendChild(createDropdown("bonus", r, p));
+
         }
     }
 
@@ -170,15 +166,15 @@ function startGame() {
     document.getElementById("game-area").classList.remove("hidden");
 
 
-    // Gimmick-Piratenbutton anzeigen
+    // iratenbutton anzeigen
     const pirateContainer = document.getElementById("pirate-button-container");
     pirateContainer.classList.remove("hidden");
 
-    // Sound abspielen
+    //Sound abspielen
     const pirateBtn = document.getElementById("pirate-button");
-    const audio = new Audio("../Assets/SkullKing.mp3"); // deine Musikdatei
+    const audio = new Audio("./Assets/SkullKing.mp3"); 
     pirateBtn.addEventListener("click", () => {
-        audio.currentTime = 0; // immer von vorne starten
+        audio.currentTime = 0; 
         audio.play();
     });
 
